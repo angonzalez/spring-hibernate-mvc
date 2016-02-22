@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+group = 'com.journaldev.spring'
+version = ''
+
+description = """SpringHibernateMvc"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+configurations { providedCompile }
+
+
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile(group: 'org.springframework', name: 'spring-context', version:'4.0.3.RELEASE') {
+	exclude(module: 'commons-logging')
+    }
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.0.3.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'4.0.3.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version:'1.9.2.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-core', version:'4.3.5.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'4.3.5.Final'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version:'1.4'
+    compile group: 'org.springframework', name: 'spring-orm', version:'4.0.3.RELEASE'
+    compile group: 'org.aspectj', name: 'aspectjrt', version:'1.7.4'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
+    compile group: 'javax.inject', name: 'javax.inject', version:'1'
+    compile group: 'javax.servlet', name: 'jstl', version:'1.2'
+    runtime group: 'org.slf4j', name: 'jcl-over-slf4j', version:'1.7.5'
+    runtime group: 'org.slf4j', name: 'slf4j-log4j12', version:'1.7.5'
+    runtime(group: 'log4j', name: 'log4j', version:'1.2.15') {
+		exclude(module: 'mail')
+		exclude(module: 'jms')
+		exclude(module: 'jmxtools')
+		exclude(module: 'jmxri')
+    }
+    testCompile group: 'junit', name: 'junit', version:'4.7'
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    providedCompile group: 'javax.servlet.jsp', name: 'jsp-api', version:'2.1'
+}
